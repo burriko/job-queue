@@ -18,7 +18,7 @@ class BeanstalkQueue implements Queue
 
 	public function push(Job $job)
 	{
-		$job_id = $this->pheanstalk->putInTube($job->getPayload(), $this->queue_name);
+		$job_id = $this->pheanstalk->putInTube($this->queue_name, $job->getPayload());
 
 		$job->setId($job_id);
 
