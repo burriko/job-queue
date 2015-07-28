@@ -1,4 +1,5 @@
 {
+	"name": "burriko/job-queue",
     "require": {
         "pda/pheanstalk": "^3.0"
     },
