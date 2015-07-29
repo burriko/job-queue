@@ -54,6 +54,12 @@ class BeanstalkQueue implements Queue
 		$this->pheanstalk->delete(new \Pheanstalk\Job($job->getId(), []));
 	}
 
+	public function countReserves(Job $job)
+	{
+		$stats = $this->pheanstalk->statsJob($job->getId());
+		return $stats->reserves;
+	}
+
 	public function getPheanstalkInstance()
 	{
 		return $this->pheanstalk;
