@@ -39,6 +39,16 @@ class BeanstalkQueue implements Queue
 		return $job;
 	}
 
+	public function release(Job $job, $delay_time = 60)
+	{
+		$this->pheanstalk->release(new \Pheanstalk\Job($job->getId(), []), null, $delay_time);
+	}
+
+	public function bury(Job $job)
+	{
+		$this->pheanstalk->bury(new \Pheanstalk\Job($job->getId(), []));
+	}
+
 	public function delete(Job $job)
 	{
 		$this->pheanstalk->delete(new \Pheanstalk\Job($job->getId(), []));
