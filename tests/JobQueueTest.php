@@ -3,7 +3,7 @@
 use JobQueue\BeanstalkQueue;
 use JobQueue\Job;
 
-class JobQueueTests extends PHPUnit_Framework_TestCase
+class JobQueueTest extends PHPUnit_Framework_TestCase
 {
 	private $job_name = 'SendEmail';
 
