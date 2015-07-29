@@ -28,6 +28,9 @@ class BeanstalkQueue implements Queue
 	public function fetchNextJob()
 	{
 		$pheanstalk_job = $this->pheanstalk->reserveFromTube($this->queue_name);
+		if (! $pheanstalk_job) {
+			return false;
+		}
 		$payload = $pheanstalk_job->getData();
 
 		$job = Job::createFromPayload($payload);
