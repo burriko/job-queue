@@ -1,12 +1,12 @@
 {
-	"name": "burriko/job-queue",
+    "name": "burriko/job-queue",
     "require": {
         "pda/pheanstalk": "^3.0"
     },
     "autoload": {
-    	"psr-4": {
-    		"JobQueue\\": "src/"
-    	}
+        "psr-4": {
+            "JobQueue\\": "src/"
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "^4.7"
