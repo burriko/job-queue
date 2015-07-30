@@ -1,7 +1,8 @@
 {
     "name": "burriko/job-queue",
     "require": {
-        "pda/pheanstalk": "^3.0"
+        "pda/pheanstalk": "^3.0",
+        "psr/log": "^1.0"
     },
     "autoload": {
         "psr-4": {
