@@ -34,7 +34,7 @@ class QueueWorker
 
             $this->runner->runJob($job);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             if ($this->queue->countReserves($job) < 3) {
                 $this->queue->release($job);
             } else {
