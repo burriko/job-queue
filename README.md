@@ -1,5 +1,7 @@
 # Job Queue
 
+[![Build Status](https://img.shields.io/travis/burriko/job-queue/master.svg?style=flat-square)](https://travis-ci.org/burriko/job-queue)
+
 Work in progress library to easily push jobs on to a queue so they can be processed outside of the web request. Currently only supports Beanstalk queues.
 
 ## Usage
