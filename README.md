@@ -1,6 +1,6 @@
 # Job Queue
 
-Work in progrees library to easily push jobs on to a queue so they can be processed outside of the web request. Currently only supports Beanstalk queues.
+Work in progress library to easily push jobs on to a queue so they can be processed outside of the web request. Currently only supports Beanstalk queues.
 
 ## Usage
 
