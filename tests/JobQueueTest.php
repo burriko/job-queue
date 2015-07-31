@@ -58,12 +58,12 @@ class JobQueueTest extends PHPUnit_Framework_TestCase
 
     private function createPheanstalkMock()
     {
-        return $this->getMockBuilder(Pheanstalk\PheanstalkInterface::class)->getMock();
+        return $this->getMockBuilder('Pheanstalk\PheanstalkInterface')->getMock();
     }
 
     private function createPheanstalkJobMock()
     {
-        return $this->getMockBuilder(Pheanstalk\Job::class)->disableOriginalConstructor()->getMock();
+        return $this->getMockBuilder('Pheanstalk\Job')->disableOriginalConstructor()->getMock();
     }
 
     private function createTestPayload()
