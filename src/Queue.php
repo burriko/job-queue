@@ -15,6 +15,4 @@ interface Queue
     public function delete(Job $job);
 
     public function countReserves(Job $job);
-
-    public function getPheanstalkInstance();
 }
