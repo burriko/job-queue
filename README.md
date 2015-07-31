@@ -18,7 +18,7 @@ $job = new \JobQueue\Job('EmailClient', ['client_id' => $id]);
 $queue->push($job);
 ```
 
-This assumes that you have an `EmailClient` class with a method named `handle` that takes an argument of client_id.
+This assumes that you have an `EmailClient` class with a method named `handle` that takes an argument of client_id. This will be called later when the job is retrieved from the queue and executed.
 
 ### Processing the queue
 
