@@ -6,6 +6,8 @@ class JobRunner
 {
     private $instantiator;
 
+    private $namespace;
+
     public function __construct()
     {
         // Set a default instantiator
@@ -17,6 +19,14 @@ class JobRunner
         $this->instantiator = $instantiator;
     }
 
+    public function setNamespace($namespace)
+    {
+        if (substr($namespace, -1) != '\\') {
+            $namespace .= '\\';
+        }
+        $this->namespace = $namespace;
+    }
+
     public function runJob(Job $job)
     {
         $command = $this->instantiateCommand($job->getClassName());
@@ -26,6 +36,9 @@ class JobRunner
 
     private function instantiateCommand($class_name)
     {
+        if (! empty($this->namespace)) {
+            $class_name = $this->namespace . $class_name;
+        }
         return call_user_func($this->instantiator, $class_name);
     }
 }
