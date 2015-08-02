@@ -27,11 +27,27 @@ class JobRunner
         $this->namespace = $namespace;
     }
 
+    /**
+     * Executes the job
+     *
+     * @param  Job $job
+     * @return boolean Returns false if the job failed
+     */
     public function runJob(Job $job)
     {
-        $command = $this->instantiateCommand($job->getClassName());
+        try {
 
-        return call_user_func_array([$command, 'handle'], $job->getArguments());
+            $command = $this->instantiateCommand($job->getClassName());
+
+            $result = call_user_func_array([$command, 'handle'], $job->getArguments());
+
+        } catch (\Exception $e) {
+
+            $result = false;
+
+        }
+
+        return $result;
     }
 
     private function instantiateCommand($class_name)

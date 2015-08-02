@@ -39,11 +39,7 @@ class QueueWorker
     {
         $this->log('Executing job ' . $job->getId());
 
-        try {
-
-            $this->runner->runJob($job);
-
-        } catch (\Exception $e) {
+        if (! $this->runner->runJob($job)) {
             $this->log("Failed because " . $e->getMessage());
 
             if ($this->queue->countReserves($job) < 3) {
