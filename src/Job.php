@@ -2,11 +2,15 @@
 
 namespace JobQueue;
 
+use DateTime;
+
 class Job
 {
     private $class_name;
 
     private $arguments;
+
+    private $created_at;
 
     private $id;
 
@@ -14,6 +18,7 @@ class Job
     {
         $this->class_name = $class_name;
         $this->arguments = $arguments;
+        $this->created_at = new DateTime();
     }
 
     public static function createFromPayload($payload)
@@ -33,6 +38,16 @@ class Job
         return $this->id;
     }
 
+    public function setCreatedAt(DateTime $created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
     public function getClassName()
     {
         return $this->class_name;
@@ -47,6 +62,7 @@ class Job
     {
         return json_encode([
             'job' => $this->class_name,
+            'created_at' => $this->created_at->format(DateTime::ISO8601),
             'data' => $this->arguments
         ]);
     }
