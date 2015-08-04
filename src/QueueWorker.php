@@ -39,7 +39,12 @@ class QueueWorker
     {
         $this->log('Executing job ' . $job->getId());
 
-        if (! $this->runner->runJob($job)) {
+        if ($this->runner->runJob($job)) {
+
+            $this->queue->delete($job);
+
+        } else {
+
             $this->log("Job failed");
 
             if ($this->queue->countReserves($job) < 3) {
