@@ -40,7 +40,7 @@ class QueueWorker
         $this->log('Executing job ' . $job->getId());
 
         if (! $this->runner->runJob($job)) {
-            $this->log("Failed because " . $e->getMessage());
+            $this->log("Job failed");
 
             if ($this->queue->countReserves($job) < 3) {
                 $this->log("Putting back in queue");
