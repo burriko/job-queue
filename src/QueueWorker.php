@@ -19,6 +19,9 @@ class QueueWorker
         $this->logger = $logger;
     }
 
+    /**
+     * Continuously loop over queue, processing jobs
+     */
     public function processQueue()
     {
         do {
@@ -26,6 +29,9 @@ class QueueWorker
         } while (true);
     }
 
+    /**
+     * Process the next job from the queue
+     */
     public function processNextJob()
     {
         $this->log("Checking for new job...");
