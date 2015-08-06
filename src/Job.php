@@ -31,7 +31,10 @@ class Job
     {
         $data = json_decode($payload, true);
 
-        return new self($data['job'], $data['data']);
+        $job = new self($data['job'], $data['data']);
+        $job->setCreatedAt(new DateTime($data['created_at']));
+
+        return $job;
     }
 
     /**

@@ -9,14 +9,6 @@ class JobQueueTest extends PHPUnit_Framework_TestCase
 
     private $job_data = ['subject' => 'Test email'];
 
-    public function testCreateJob()
-    {
-        $job = new Job($this->job_name, $this->job_data);
-
-        $this->assertEquals($this->job_name, $job->getClassName());
-        $this->assertEquals($this->job_data, $job->getArguments());
-    }
-
     public function testPushJobToQueue()
     {
         $job = new Job($this->job_name, $this->job_data);
@@ -68,6 +60,8 @@ class JobQueueTest extends PHPUnit_Framework_TestCase
 
     private function createTestPayload()
     {
-        return json_encode(['job' => $this->job_name, 'data' => $this->job_data]);
+        $date = new DateTime();
+        $date = $date->format(DateTime::ISO8601);
+        return json_encode(['job' => $this->job_name, 'data' => $this->job_data, 'created_at' => $date]);
     }
 }
