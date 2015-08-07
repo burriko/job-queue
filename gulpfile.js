@@ -10,5 +10,5 @@ gulp.task('phpunit', function() {
 });
 
 gulp.task('default', function() {
-    gulp.watch('**/*.php', { debounceDelay: 1000 }, ['phpunit']);
+    gulp.watch(['src/**/*.php', 'tests/**/*.php'], { debounceDelay: 1000 }, ['phpunit']);
 });
