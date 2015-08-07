@@ -52,7 +52,7 @@ class JobRunner
 
     private function instantiateCommand($class_name)
     {
-        if (! empty($this->namespace)) {
+        if (!empty($this->namespace)) {
             $class_name = $this->namespace . $class_name;
         }
         return call_user_func($this->instantiator, $class_name);
