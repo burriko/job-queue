@@ -15,7 +15,7 @@ interface Queue
     /**
      * Fetch next job from the queue
      *
-     * @return Job
+     * @return Job|false
      */
     public function fetchNextJob();
 
