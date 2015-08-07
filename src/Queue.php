@@ -15,9 +15,10 @@ interface Queue
     /**
      * Fetch next job from the queue
      *
+     * @param int $delay_time
      * @return Job|false
      */
-    public function fetchNextJob();
+    public function fetchNextJob($delay_time = 60);
 
     /**
      * Release a job back to the queue
@@ -25,7 +26,7 @@ interface Queue
      * @param Job $job
      * @param int $delay_time
      */
-    public function release(Job $job, $delay_time);
+    public function release(Job $job, $delay_time = 60);
 
     /**
      * Bury a job so that it cannot be fetched
