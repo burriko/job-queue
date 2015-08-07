@@ -41,6 +41,9 @@ class QueueWorker
         }
     }
 
+    /**
+     * @param Job $job
+     */
     private function executeJob($job)
     {
         $this->log('Executing job ' . $job->getId());
@@ -65,6 +68,9 @@ class QueueWorker
         }
     }
 
+    /**
+     * @param string $message
+     */
     private function log($message)
     {
         if ($this->logger) {
