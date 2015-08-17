@@ -16,7 +16,7 @@ $queue = new JobQueue\BeanstalkQueue($pheanstalk, 'email_queue');
 
 You can then push Jobs on to the Queue.
 ```
-$job = new \JobQueue\Job('EmailClient', ['client_id' => $id]);
+$job = new JobQueue\Job('EmailClient', ['client_id' => $id]);
 $queue->push($job);
 ```
 
