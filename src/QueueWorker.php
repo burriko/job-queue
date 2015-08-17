@@ -36,7 +36,7 @@ class QueueWorker
     {
         $this->log("Checking for new job...");
 
-        if ($job = $this->queue->fetchNextJob()) {
+        if ($job = $this->queue->next()) {
             $this->executeJob($job);
         }
     }

@@ -17,10 +17,10 @@ class JobQueueTest extends PHPUnit_Framework_TestCase
         $pheanstalk->method('putInTube')->willReturn(123456);
 
         $queue = new BeanstalkQueue($pheanstalk, 'test');
-        $queue->push($job);
+        $queue->add($job);
     }
 
-    public function testFetchNextJob()
+    public function testNext()
     {
         $pheanstalk_job = $this->createPheanstalkJobMock();
         $pheanstalk_job->method('getData')->willReturn($this->createTestPayload());
@@ -29,7 +29,7 @@ class JobQueueTest extends PHPUnit_Framework_TestCase
         $pheanstalk->method('reserveFromTube')->willReturn($pheanstalk_job);
 
         $queue = new BeanstalkQueue($pheanstalk, 'test');
-        $job = $queue->fetchNextJob();
+        $job = $queue->next();
 
         $this->assertInstanceOf('JobQueue\Job', $job);
         $this->assertEquals($this->job_name, $job->getClassName());

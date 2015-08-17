@@ -16,7 +16,7 @@ class BeanstalkQueue implements Queue
         $this->queue_name = $queue_name;
     }
 
-    public function push(Job $job)
+    public function add(Job $job)
     {
         $job_id = $this->pheanstalk->putInTube($this->queue_name, $job->getPayload());
 
@@ -25,7 +25,7 @@ class BeanstalkQueue implements Queue
         return $job;
     }
 
-    public function fetchNextJob($delay_time = 60)
+    public function next($delay_time = 60)
     {
         $pheanstalk_job = $this->pheanstalk->reserveFromTube($this->queue_name, $delay_time);
         if (!$pheanstalk_job) {

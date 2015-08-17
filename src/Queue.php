@@ -10,7 +10,7 @@ interface Queue
      * @param  Job $job
      * @return Job
      */
-    public function push(Job $job);
+    public function add(Job $job);
 
     /**
      * Fetch next job from the queue
@@ -18,7 +18,7 @@ interface Queue
      * @param int $delay_time
      * @return Job|false
      */
-    public function fetchNextJob($delay_time = 60);
+    public function next($delay_time = 60);
 
     /**
      * Release a job back to the queue
