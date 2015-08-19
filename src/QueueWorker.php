@@ -6,11 +6,11 @@ use Psr\Log\LoggerInterface;
 
 class QueueWorker
 {
-    private $queue;
+    protected $queue;
 
-    private $runner;
+    protected $runner;
 
-    private $logger;
+    protected $logger;
 
     public function __construct(Queue $queue, JobRunner $runner, LoggerInterface $logger = null)
     {
@@ -44,7 +44,7 @@ class QueueWorker
     /**
      * @param Job $job
      */
-    private function executeJob($job)
+    protected function executeJob($job)
     {
         $this->log('Executing job ' . $job->getId());
 
@@ -71,7 +71,7 @@ class QueueWorker
     /**
      * @param string $message
      */
-    private function log($message)
+    protected function log($message)
     {
         if ($this->logger) {
             $this->logger->info($message);
