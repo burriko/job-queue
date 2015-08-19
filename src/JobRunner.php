@@ -43,6 +43,8 @@ class JobRunner
 
         } catch (\Exception $e) {
 
+            error_log($e);
+
             $result = false;
 
         }
