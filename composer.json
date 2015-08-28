@@ -1,6 +1,17 @@
 {
     "name": "burriko/job-queue",
+    "description": "Library to process jobs using Beanstalk.",
+    "homepage": "https://github.com/burriko/job-queue",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Graeme Tait",
+            "email": "burriko@gmail.com",
+            "homepage": "http://graemetait.co.uk"
+        }
+    ],
     "require": {
+        "php": ">=5.4.0",
         "pda/pheanstalk": "^3.0",
         "psr/log": "^1.0"
     },
